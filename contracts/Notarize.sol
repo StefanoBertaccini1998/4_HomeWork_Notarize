@@ -63,7 +63,7 @@ contract Notarize is OwnableUpgradeable, AccessControlEnumerableUpgradeable {
         return (_documents[_num].docUrl, _documents[_num].docHash);
     }
 
-    function getDocInfoAndCounter(
+    function getDocInfoCounter(
         uint256 _num
     ) external returns (string memory, bytes32) {
         getInfoCounter.increment();

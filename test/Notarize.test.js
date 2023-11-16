@@ -105,12 +105,27 @@ describe("Notarization Test", async function (accounts) {
     console.log(result[0].toString() + ":" + result[1]);
   });
 
+  it("how many request on document info", async function () {
+    getInfoCounter = await notarizeContract.getInfoCounter();
+    console.log(getInfoCounter.toString());
+    tx = await notarizeContract.getDocInfoCounter(tot - 1);
+    getInfoCounter = await notarizeContract.getInfoCounter();
+    console.log(getInfoCounter.toString());
+    tx = await notarizeContract.getDocInfoCounter(tot - 1);
+    getInfoCounter = await notarizeContract.getInfoCounter();
+    console.log(getInfoCounter.toString());
+    tx = await notarizeContract.getDocInfoCounter(tot - 1);
+    getInfoCounter = await notarizeContract.getInfoCounter();
+    console.log(getInfoCounter.toString());
+    tx = await notarizeContract.getDocInfoCounter(tot - 1);
+  });
+
   it("Is document already registered", async function () {
     await expect(await notarizeContract.getRegisteredHash(hash1)).to.be.true;
-
     const hash1Corrupted =
       "0xa2cbe6a9b5c75f04196a2d044fd62056a455feb6204af1803456be72c2ce0523";
     await expect(await notarizeContract.getRegisteredHash(hash1Corrupted)).to.be
       .false;
   });
+  
 });
